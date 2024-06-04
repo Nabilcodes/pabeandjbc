@@ -26,7 +26,10 @@ def get_billing_by_name(db: Session, name: str):
     return db.query(models.Billing).filter(models.Billing.billed_name == name)
 
 def create_billing(db: Session, billing: schemas.BillingCreate):
-    db_billing = models.Billing(**billing.model_dump(), status="UNPAID")
+    db_billing = models.Billing(billed_name=billing.billed_name,
+                                billed_email=billing.billed_email,
+                                status="UNPAID", 
+                                value= 5*billing.nilai_fob/100 + billing.nilai_pabean)
     db.add(db_billing)
     db.commit()
     db.refresh(db_billing)

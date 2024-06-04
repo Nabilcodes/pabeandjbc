@@ -4,14 +4,16 @@ import uuid
 class BillingBase(BaseModel):
     billed_name: str
     billed_email: str
-    value: int
 
 class BillingCreate(BillingBase):
+    nilai_fob: int
+    nilai_pabean: int
     pass
 
 class Billing(BillingBase):
     id: uuid
     status: str
+    value: int
 
     class Config:
         from_attributes = True
