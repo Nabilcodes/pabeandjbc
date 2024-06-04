@@ -54,6 +54,6 @@ def create_billing(billing: schemas.BillingCreate, db: Session = Depends(get_db)
 #     raise HTTPException(status_code=400, detail="Email already registered")
     return service_clients.create_billing(db=db, billing=billing)
 
-@app.post("/pay-billing")
-def pay_billing(, db: Session = Depends(get_db)):
+# @app.post("/pay-billing")
+# def pay_billing(, db: Session = Depends(get_db)):
     
